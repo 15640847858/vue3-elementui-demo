@@ -30,24 +30,26 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "LoginView",
   data() {
     return {
-      userName: "",
-      passWord: "",
+      userName: "" as string,
+      passWord: "" as string,
     };
   },
   methods: {
-    btnSubmit() {
+    btnSubmit(): void {
       this.$router.push("/");
     },
-    btnCancel() {
+    btnCancel(): void {
       this.userName = "";
       this.passWord = "";
     },
   },
-};
+});
 </script>
 
 <style scoped>
