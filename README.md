@@ -23,9 +23,13 @@ npm install
 npm run serve
 ```
 
-![输入图片说明](../screenshots/image11.png)
+![输入图片说明](https://gitee.com/ibunsong/vue2-python3/raw/master/screenshots/image10.png)
 
-![输入图片说明](../screenshots/image12.png)
+![输入图片说明](https://gitee.com/ibunsong/vue2-python3/raw/master/screenshots/image11.png)
+
+![输入图片说明](https://gitee.com/ibunsong/vue2-python3/raw/master/screenshots/image12.png)
+
+![输入图片说明](https://gitee.com/ibunsong/vue2-python3/raw/master/screenshots/image13.png)
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
