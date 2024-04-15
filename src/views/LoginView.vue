@@ -103,7 +103,7 @@ export default defineComponent({
   name: "LoginView",
   data() {
     return {
-      activeTab: "regist" as string,
+      activeTab: "login" as string,
       userName: "" as string,
       passWord: "" as string,
       phoneNumber: "" as string,
@@ -141,6 +141,7 @@ export default defineComponent({
 
 .el-tabs {
   text-align: center;
+  margin-top: 30px;
   margin-left: 35%;
   width: 30%;
 }
@@ -172,6 +173,10 @@ div.el-row-margin-20 a {
 }
 
 @media (max-width: 768px) {
+  .login-title {
+    margin-top: 0;
+  }
+
   .el-tabs {
     text-align: left;
     margin-left: 15%;
