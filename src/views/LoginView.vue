@@ -219,7 +219,8 @@ div.el-row-margin-20 a {
   }
 
   div.el-row-margin-20 a {
-    margin-left: 70%;
+    margin-top: 5px;
+    margin-left: 60%;
   }
 }
 

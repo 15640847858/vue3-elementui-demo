@@ -12,7 +12,7 @@
               <el-avatar
                 src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
               />
-              <div class="header-username">ibun.song</div>
+              <div class="header-username" v-if="show_flg">ibun.song</div>
             </div>
           </template>
           <div>
@@ -166,6 +166,8 @@ export default defineComponent({
       menuStatus: false,
       activeIndex: "1-3",
       drawerStatus: false,
+      screenWidth: document.body.clientWidth,
+      show_flg: true,
     };
   },
   methods: {
@@ -189,7 +191,7 @@ export default defineComponent({
         background: #002e58 !important;
         border: 1px solid #002e58 !important;
       }
-      
+
       /* 确认按钮背景颜色 */
       .el-button+.el-button{
         background-color: #002e58;
@@ -214,6 +216,11 @@ export default defineComponent({
   },
   mounted() {
     this.addCustomStyles();
+    if (this.screenWidth > 800) {
+      this.show_flg = true;
+    } else {
+      this.show_flg = false;
+    }
   },
 });
 </script>
@@ -256,6 +263,12 @@ body a {
   right: 8px;
   margin-top: -42px;
   color: #002e58;
+}
+
+@media (max-width: 768px) {
+  .header-avatar {
+    width: 45px;
+  }
 }
 
 .header-avatar:hover {
