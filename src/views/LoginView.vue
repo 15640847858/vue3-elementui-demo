@@ -5,7 +5,7 @@
   </el-row>
 
   <el-tabs v-model="activeTab" @tab-click="changeTabs">
-    <el-tab-pane label="登录" name="login">
+    <el-tab-pane label="登录" name="login" id="loginForm">
       <el-row justify="center" class="el-row-margin-60">
         <el-input
           v-model="userName"
@@ -36,7 +36,7 @@
         <el-button round @click="btnCancel">清空</el-button>
       </el-row>
     </el-tab-pane>
-    <el-tab-pane label="注册" name="regist">
+    <el-tab-pane label="注册" name="regist" id="registForm">
       <el-row justify="center" class="el-row-margin-60">
         <label>用&nbsp户&nbsp名 ：</label>
 
@@ -191,6 +191,15 @@ div.el-row-margin-20 a {
     background-color: #ebf1ff;
   }
 
+  #registForm .el-row-margin-50,
+  #registForm .el-row-margin-60 {
+    margin-top: 20px !important;
+  }
+
+  #registForm .el-row-margin-30 {
+    margin-top: 10px !important;
+  }
+
   .el-input {
     width: 480px;
     height: 40px;
@@ -210,7 +219,7 @@ div.el-row-margin-20 a {
   }
 
   div.el-row-margin-20 a {
-    margin-left: 100px;
+    margin-left: 70%;
   }
 }
 
