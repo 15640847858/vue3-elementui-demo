@@ -38,7 +38,7 @@
 
       <!-- Google 登录按钮 -->
       <el-row justify="center" class="el-row-margin-30">
-        <div class="g-signin-button" style="height: 50px; width: 30%">
+        <div class="g-signin-button" style="height: 50px">
           <component
             :is="'script'"
             src="https://accounts.google.com/gsi/client"
@@ -172,6 +172,8 @@ export default defineComponent({
       console.log("解码后的 Token:", decodedToken);
       const username = decodedToken.name;
       console.log("Google 用户名:", username);
+      alert("Welcome: " + username + " ！");
+      this.$router.push("/");
     },
 
     parseJwt(token: string) {
