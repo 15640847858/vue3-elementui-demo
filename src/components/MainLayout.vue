@@ -71,7 +71,7 @@
             <el-menu-item-group>
               <template #title>分组一</template>
               <el-menu-item index="1-1">
-                <router-link to="/">Home</router-link>
+                <router-link to="/dashboard">Home</router-link>
               </el-menu-item>
               <el-menu-item index="1-2">
                 <router-link to="/about">About</router-link>
@@ -84,19 +84,27 @@
                 </el-icon>
                 <span><router-link to="/test">测试页</router-link></span>
               </el-menu-item>
+              <el-menu-item index="0">
+                <el-icon :size="30">
+                  <PieChart />
+                </el-icon>
+                <template #title>
+                  <router-link to="/dashboard">仪表盘</router-link>
+                </template>
+              </el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>
           <el-sub-menu index="2">
             <template #title>
-              <el-icon :size="30"> <folder /> </el-icon>
-              <span>导航二</span>
+              <el-icon :size="30"> <chat-dot-square /> </el-icon>
+              <span>AI</span>
             </template>
             <el-menu-item-group>
               <el-menu-item index="2-1">
-                <router-link to="/">Home</router-link>
+                <router-link to="/chatgpt">ChatGPT</router-link>
               </el-menu-item>
               <el-menu-item index="2-2">
-                <router-link to="/about">About</router-link>
+                <router-link to="/about">DeepSeek</router-link>
               </el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>
@@ -128,7 +136,12 @@
           <h4>系统设置</h4>
         </template>
         <template #default>
-          <div>body</div>
+          <div>
+            <el-icon :size="30">
+              <Moon />
+            </el-icon>
+            <el-switch v-model="isDarkMode" @change="toggleTheme" />
+          </div>
         </template>
         <template #footer>
           <div style="flex: auto">
@@ -164,10 +177,12 @@ export default defineComponent({
   data() {
     return {
       menuStatus: false,
-      activeIndex: "1-3",
+      activeIndex: "1-1",
       drawerStatus: false,
       screenWidth: document.body.clientWidth,
       show_flg: true,
+      //动态主题切换
+      isDarkMode: localStorage.getItem("theme") === "dark",
     };
   },
   methods: {
@@ -213,6 +228,12 @@ export default defineComponent({
           // catch error
         });
     },
+
+    //动态主题切换
+    toggleTheme() {
+      document.body.classList.toggle("dark-mode", this.isDarkMode);
+      localStorage.setItem("theme", this.isDarkMode ? "dark" : "light");
+    },
   },
   mounted() {
     this.addCustomStyles();
@@ -221,6 +242,7 @@ export default defineComponent({
     } else {
       this.show_flg = false;
     }
+    document.body.classList.toggle("dark-mode", this.isDarkMode);
   },
 });
 </script>

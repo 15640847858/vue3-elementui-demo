@@ -4,7 +4,8 @@ import AboutView from '../views/AboutView.vue';
 import TestView from '../views/TestView.vue';
 import SelfCenterView from '../views/SelfCenterView.vue';
 import LoginView from '../views/LoginView.vue';
-
+import ChatGPTView from '../views/ChatGPTView.vue';
+import DashboardView from '../views/DashboardView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -21,6 +22,18 @@ const routes: Array<RouteRecordRaw> = [
         path: '/test',
         name: 'test',
         component: TestView
+      },
+      {
+        path: '/chatgpt',
+        name: 'chatgpt',
+        component: ChatGPTView
+      },
+      {
+
+          path: "/dashboard",
+          name: "dashboard",
+          component: DashboardView,
+              
       },
       {
         path: '/self-center',
