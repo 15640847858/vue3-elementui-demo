@@ -29,7 +29,7 @@
         <a href="#" @click="forgetPsd">忘记密码？</a>
       </el-row>
 
-      <el-row justify="center" class="el-row-margin-50">
+      <el-row justify="center" class="el-row-margin-20">
         <el-button round @click="btnSubmit">登录</el-button>
       </el-row>
       <el-row justify="center" class="el-row-margin-30">
@@ -38,7 +38,7 @@
 
       <!-- Google 登录按钮 -->
       <el-row justify="center" class="el-row-margin-30">
-        <div class="g-signin-button" style="height: 50px">
+        <div class="g-signin-button" style="height: 30px">
           <component
             :is="'script'"
             src="https://accounts.google.com/gsi/client"
