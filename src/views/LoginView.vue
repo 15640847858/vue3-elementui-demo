@@ -38,7 +38,7 @@
 
       <!-- Google 登录按钮 -->
       <el-row justify="center" class="el-row-margin-30">
-        <div class="g-signin-button" style="height: 30px">
+        <div class="g-signin-button" style="height: 50px">
           <component
             :is="'script'"
             src="https://accounts.google.com/gsi/client"
