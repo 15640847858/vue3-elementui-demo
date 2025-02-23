@@ -35,6 +35,35 @@
       <el-row justify="center" class="el-row-margin-30">
         <el-button round @click="btnCancel">清空</el-button>
       </el-row>
+
+      <!-- Google 登录按钮 -->
+      <el-row justify="center" class="el-row-margin-30">
+        <div class="g-signin-button" style="height: 50px; width: 30%">
+          <component
+            :is="'script'"
+            src="https://accounts.google.com/gsi/client"
+            ansyc
+          />
+          <div
+            id="g_id_onload"
+            :data-client_id="googleClientID"
+            data-context="signin"
+            data-ux_mode="popup"
+            data-callback="googleSignCallBack"
+            data-auto_prompt="false"
+          ></div>
+          <div
+            class="g_id_signin"
+            data-type="standard"
+            data-shape="rectangular"
+            data-theme="filled_blue"
+            data-text="signin_with"
+            data-size="large"
+            data-locale="ja"
+            data-logo_alignment="left"
+          ></div>
+        </div>
+      </el-row>
     </el-tab-pane>
     <el-tab-pane label="注册" name="regist" id="registForm">
       <el-row justify="center" class="el-row-margin-60">
@@ -107,8 +136,14 @@ export default defineComponent({
       userName: "" as string,
       passWord: "" as string,
       phoneNumber: "" as string,
+      googleClientID:
+        "212510144640-udhj90uuvnji6t3lechmjmv74dbm4539.apps.googleusercontent.com" as string,
     };
   },
+  mounted() {
+    (window as any).googleSignCallBack = this.googleSignCallBack;
+  },
+
   methods: {
     changeTabs(): void {},
     forgetPsd(): void {
@@ -125,6 +160,33 @@ export default defineComponent({
       this.userName = "";
       this.passWord = "";
       this.phoneNumber = "";
+    },
+
+    googleSignCallBack(googleUser: any): void {
+      console.log("googleUser", googleUser);
+
+      // 解码 credential 字段中的 JWT token
+
+      const decodedToken = this.parseJwt(googleUser.credential);
+
+      console.log("解码后的 Token:", decodedToken);
+      const username = decodedToken.name;
+      console.log("Google 用户名:", username);
+    },
+
+    parseJwt(token: string) {
+      const base64Url = token.split(".")[1];
+      const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+      const jsonPayload = decodeURIComponent(
+        atob(base64)
+          .split("")
+          .map(function (c) {
+            return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+          })
+          .join("")
+      );
+
+      return JSON.parse(jsonPayload);
     },
   },
 });
@@ -286,5 +348,10 @@ div.el-row-margin-20 a {
 
 .el-footer a {
   text-decoration: none;
+}
+
+.google-icon {
+  width: 20px;
+  margin-right: 8px;
 }
 </style>
